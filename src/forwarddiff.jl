@@ -262,6 +262,9 @@ function anyeltypedual(x::NamedTuple, ::Type{Val{counter}} = Val{0}) where {coun
     anyeltypedual(values(x))
 end
 
+anyeltypedual(::@Kwargs{}, ::Type{Val{counter}} = Val{0}) where {counter} = Any
+anyeltypedual(::Type{@Kwargs{}}, ::Type{Val{counter}} = Val{0}) where {counter} = Any
+
 @inline promote_u0(::Nothing, p, t0) = nothing
 
 @inline function promote_u0(u0, p, t0)
